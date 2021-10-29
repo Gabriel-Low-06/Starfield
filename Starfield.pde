@@ -64,7 +64,8 @@ class Stars {
     velocity=globalspeed/13; //update velocity based on globalspeed
     fill(mycolor);
     noStroke();
-    if (globalspeed<200) {
+    if (globalspeed<50) {
+        fill(255,255,255);
       ellipse(100,100, 10000, 10000); //draw star
     } else {
       strokeWeight(s/25+1); //if moving fast, draw it as line
