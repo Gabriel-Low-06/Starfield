@@ -62,13 +62,13 @@ class Stars {
   }
   void paint() {
     velocity=globalspeed/13; //update velocity based on globalspeed
-    fill(mycolor);
-    noStroke();
+   // fill(mycolor);
+   // noStroke();
     if (globalspeed<50) {
         fill(255,255,255);
         strokeWeight(10000);
         stroke(255,255,255);
-      ellipse(100,100, 10000, 10000); //draw star
+      ellipse(1000,500, 10000, 10000); //draw star
     } else {
       strokeWeight(s/25+1); //if moving fast, draw it as line
       if (globalspeed>300 && s<10) { //if in 'hyperspace' give blue tint
