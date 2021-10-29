@@ -49,7 +49,7 @@ class Stars {
   float x, y; //self explantory local viarables
   float velocity, theta;
   int mycolor;
-  int s = (int)random(0, 700);
+  int s = (int)random(0, 7);
   Stars() {
     x=(int)random(0, 1100); //place randomly on screen
     y=(int)(random(0, 700)); 
@@ -65,14 +65,13 @@ class Stars {
     fill(mycolor);
     noStroke();
     if (globalspeed<50) {
-      ellipse(x, y, 10000, 10000); //draw star
+      ellipse(100,100, 10000, 10000); //draw star
     } else {
       strokeWeight(s/25+1); //if moving fast, draw it as line
       if (globalspeed>300 && s<10) { //if in 'hyperspace' give blue tint
         mycolor=color(150, 200, 300);
       }
       stroke(mycolor);
-
       line(x, y, x-(velocity*cos(theta)), y-velocity*sin(theta));
     }
     x+=velocity*cos(theta);
