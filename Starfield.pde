@@ -48,6 +48,8 @@ class Asteroid {
 class Stars {
   float x, y; //self explantory local viarables
   float velocity, theta;
+  int mycolor;
+  int s = (int)random(0, 7);
   Stars() {
     x=(int)random(0, 1100); //place randomly on screen
     y=(int)(random(0, 700)); 
@@ -56,32 +58,49 @@ class Stars {
       theta+=3.141592;
     }
     velocity=globalspeed/13;
+    mycolor=color(255, 255, 255);
   }
   void paint() {
     velocity=globalspeed/13; //update velocity based on globalspeed
-    fill(300, 300, 300);
+    fill(mycolor);
     noStroke();
     if (globalspeed<50) {
-      ellipse(x, y, 1000, 1000); //draw star
+      ellipse(x, y, s, s); //draw star
     } else {
-      strokeWeight(200); //if moving fast, draw it as line
-      stroke(300, 300, 300);
-      if (globalspeed>300) { //if in 'hyperspace' give blue tint
-        stroke(150, 200, 300);
+      strokeWeight(s/25+1); //if moving fast, draw it as line
+      if (globalspeed>300 && s<10) { //if in 'hyperspace' give blue tint
+        mycolor=color(150, 200, 300);
       }
+      stroke(mycolor);
+
       line(x, y, x-(velocity*cos(theta)), y-velocity*sin(theta));
     }
     x+=velocity*cos(theta);
     y+=velocity*sin(theta); //update position from velocity and rotation
   }
 }
+
+class Fireballs extends Stars {
+  Fireballs() {
+    x=(int)random(0, 1100); //place randomly on screen
+    y=(int)(random(0, 700)); 
+    mycolor=color(255, 100, 100);
+    s=30;
+    theta=random(0, 7);
+  }
+}
+
 Asteroid[] rocks = new Asteroid[15]; //declare asteroids and stars
 Stars[] streaks = new Stars[30];
 
 void setup() {
   size(1100, 700, P3D);
   for (int i=0; i<30; i++) {
-    streaks[i]=new Stars();
+    if (i<28) {
+      streaks[i] = new Stars();
+    } else {
+      streaks[i]=new Fireballs();
+    }
   }
   for (int q=0; q<15; q++) {
     rocks[q]=new Asteroid(false);
@@ -100,11 +119,16 @@ void draw() {
   translate(-4550, -2900, -5000); //move stars and background behind asteroid
   scale(9.25, 9.25);
   fill(0, 0, 0, 70); //create blurred effect while refreshing frame
+  noStroke();
   rect(0, 0, 1100, 700);
   for (int i=0; i<30; i++) { //draw stars
     streaks[i].paint();
     if (streaks[i].x>1100||streaks[i].x<0||streaks[i].y>700||streaks[i].y<0) {
-      streaks[i] = new Stars();
+      if (i<28) {
+        streaks[i] = new Stars();
+      } else {
+        streaks[i]=new Fireballs();
+      }
     }
   }
   popMatrix();
