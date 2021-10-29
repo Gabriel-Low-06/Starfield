@@ -65,7 +65,7 @@ class Stars {
     fill(mycolor);
     noStroke();
     if (globalspeed<50) {
-      ellipse(x, y, s, s); //draw star
+      ellipse(x, y, 10000, 10000); //draw star
     } else {
       strokeWeight(s/25+1); //if moving fast, draw it as line
       if (globalspeed>300 && s<10) { //if in 'hyperspace' give blue tint
