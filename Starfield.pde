@@ -49,7 +49,7 @@ class Stars {
   float x, y; //self explantory local viarables
   float velocity, theta;
   int mycolor;
-  int s = (int)random(0, 7);
+  int s = (int)random(0, 700);
   Stars() {
     x=(int)random(0, 1100); //place randomly on screen
     y=(int)(random(0, 700)); 
