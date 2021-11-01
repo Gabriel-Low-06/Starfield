@@ -49,7 +49,7 @@ class Stars {
   float x, y; //self explantory local viarables
   float velocity, theta;
   int mycolor;
-  int s = (int)random(0, 7);
+  int s = 1;
   Stars() {
     x=(int)random(0, 1100); //place randomly on screen
     y=(int)(random(0, 700)); 
@@ -65,10 +65,10 @@ class Stars {
    // fill(mycolor);
    // noStroke();
     if (globalspeed<50) {
-        fill(255,255,255);
         strokeWeight(10000);
         stroke(255,255,255);
        pushMatrix();
+       fill(myColor);
        translate(x,y);
       sphere(s);
       popMatrix();
