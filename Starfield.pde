@@ -70,12 +70,12 @@ class Stars {
         stroke(255,255,255);
        pushMatrix();
        translate(x,y);
-      sphere(100);
+      sphere(s);
       popMatrix();
       
       //draw star
     } else {
-      strokeWeight(s/25+1); //if moving fast, draw it as line
+      strokeWeight(s/25+10); //if moving fast, draw it as line
       if (globalspeed>300 && s<10) { //if in 'hyperspace' give blue tint
         mycolor=color(150, 200, 300);
       }
