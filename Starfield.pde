@@ -73,7 +73,7 @@ class Stars {
       
       //draw star
     } else {
-      strokeWeight(s/25+1); //if moving fast, draw it as line
+      strokeWeight(100); //if moving fast, draw it as line
       if (globalspeed>300 && s<10) { //if in 'hyperspace' give blue tint
         mycolor=color(150, 200, 300);
       }
